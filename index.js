@@ -19,8 +19,8 @@ http.listen(3000, function() {
 
 function myTimer() {
     var d = new Date();
-    var startTime = moment().format('LTS');
-    //var serverTimeString = moment(startTime, );
-    console.log(startTime);
-    io.emit('chat message', startTime);
+    var startTime = moment().format('YYYY-MM-DD hh:mm:ss');
+    var serverTimeString = moment(startTime, );
+    console.log(serverTimeString); 
+    io.emit('chat message', serverTimeString);
 }
