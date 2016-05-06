@@ -5,8 +5,9 @@
   </head>
   <body ng-controller="mainCtrl">
     <div ng-bind="timemsg"></div>
-    <button type="button" name="button" ng-click="startTimmer()">Start</button>
-    <button type="button" name="button" ng-click="stopTimmer()">Stop</button>
+    <button type="button" name="button" ng-click="startTimer()">Start</button>
+    <button type="button" name="button" ng-click="pauseTimer()">Pause</button>
+    <button type="button" name="button" ng-click="clearTimer()">Clear</button>
 
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -21,12 +22,16 @@
           $scope.timemsg = msg;
         });
 
-        $scope.startTimmer = function() {
+        $scope.startTimer = function() {
           socket.emit('chat message', 'start');
         }
 
-        $scope.stopTimmer = function(){
-          socket.emit('chat message', 'stop');
+        $scope.pauseTimer = function(){
+          socket.emit('chat message', 'pause');
+        }
+
+        $scope.clearTimer = function(){
+          socket.emit('chat message', 'clear');
         }
       }]);
 
