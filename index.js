@@ -15,11 +15,13 @@ io.on('connection', function(socket) {
     if(msg=="start" && unlock) {
       unlock = false;
       timer();
-  }else if(msg=="pause") {
+
+    }else if(msg=="pause") {
       clearTimeout(t);
       io.emit('chat message', currentTime);
       socket.broadcast.emit('chat message', currentTime);
       unlock = true;
+
     } else if (msg=="clear") {
         clear();
         io.emit('chat message', currentTime);
